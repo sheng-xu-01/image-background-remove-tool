@@ -21,12 +21,13 @@ def upload_image():
 		flash('No file part')
 		return redirect(request.url)
 	files = request.files.getlist('files[]')
+	# print(request.files)
 	file_names = []
 	for file in files:
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
 			file_names.append(filename)
-			# file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		#else:
 		#	flash('Allowed image types are -> png, jpg, jpeg, gif')
 		#	return redirect(request.url)
