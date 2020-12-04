@@ -29,6 +29,7 @@ from libs.networks import model_detect
 import libs.preprocessing as preprocessing
 import libs.postprocessing as postprocessing
 
+
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
@@ -77,6 +78,7 @@ def __save_image_file__(img, file_name, output_path, wmode):
         file_name = os.path.splitext(file_name)[0] + '.png'
         # Save image
         img.save(os.path.join(output_path, file_name))
+    # return save_file_name
 
 
 def process(input_path, output_path, model_name="u2net",
@@ -89,6 +91,7 @@ def process(input_path, output_path, model_name="u2net",
     :param postprocessing_method_name: Method for image preprocessing
     :param preprocessing_method_name: Method for image post-processing
     """
+    print('processing...')
     if input_path is None or output_path is None:
         raise Exception("Bad parameters! Please specify input path and output path.")
 
@@ -114,7 +117,7 @@ def process(input_path, output_path, model_name="u2net",
             __save_image_file__(image, file, output_path, wmode)
     else:
         raise Exception("Bad input parameter! Please indicate the correct path to the file or folder.")
-
+    # return save_file_name
 
 def cli():
     """CLI"""

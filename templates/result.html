@@ -1,0 +1,9 @@
+<!doctype html>
+
+{% if filenames %}
+	{% for filename in filenames %}
+		<div>
+			<img src="{{ url_for('display_image', filename=filename) }}">
+		</div>
+	{% endfor %}
+{% endif %}
